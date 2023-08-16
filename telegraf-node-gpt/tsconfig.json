@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES2018",
-    "lib": ["ES2022"],
+    "lib": ["ES2018"],
     "module": "NodeNext",
     "rootDir": "./src",
     "resolveJsonModule": true,
     "allowJs": true,
     "sourceMap": true,
+    "baseUrl": "/src",
     "outDir": "./build",
     "removeComments": true,
     "esModuleInterop": true,
