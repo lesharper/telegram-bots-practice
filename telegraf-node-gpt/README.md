@@ -1,5 +1,8 @@
-# Telegram bot practice with Node.js and Telegraf
+# Telegram bot Telegraf
 
+Этот небольшой бот разработан с помощью фреймворка Telegraf 
+и использует в себе возможность общения с нейронной моделью GPT. 
+Внутри проекта реализуется возможность общения с ИИ через голосовые сообщения.
 
 ## Start project
 
