@@ -1,3 +1,4 @@
 {
-  "TELEGRAM_TOKEN": ""
+  "TELEGRAM_TOKEN": "",
+  "OPENAI_KEY": ""
 }
