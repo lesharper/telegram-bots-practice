@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"log"
+
+	"./clients/telegram"
 )
 
 const (
