@@ -3,17 +3,17 @@ package main
 import (
 	"flag"
 	"log"
-
-	"./clients/telegram"
 )
 
 const (
-	tgBotHost = "api.telegram.org"
+	tgBotHost         = "api.telegram.org"
+	sqliteStoragePath = "data/sqlite/storage.db"
+	batchSize         = 100
 )
 
 func main() {
 
-	tgClient := telegram.New(tgBotHost, mustToken())
+	//tgClient := telegram.New(tgBotHost, mustToken())
 
 	//fetcher = fetcher.New(tgClient)
 
@@ -23,10 +23,16 @@ func main() {
 }
 
 func mustToken() string {
-	token := flag.String("token-bot-token", "", "Token for access to telegram bot")
+	token := flag.String(
+		"tg-bot-token",
+		"",
+		"token for access to telegram bot",
+	)
+
 	flag.Parse()
+
 	if *token == "" {
-		log.Fatal("Token is not specified")
+		log.Fatal("token is not specified")
 	}
 
 	return *token

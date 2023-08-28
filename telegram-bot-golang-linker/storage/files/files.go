@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"../../lib/e"
-	"../../storage"
+	"telegram-bot-golang-linker/lib/e"
+	"telegram-bot-golang-linker/storage"
 )
 
 type Storage struct {
@@ -18,8 +18,6 @@ type Storage struct {
 }
 
 const defaultPerm = 0774
-
-var ErrNoSavedPages = errors.New("No saved pages")
 
 func New(basePath string) Storage {
 	return Storage{basePath: basePath}
@@ -64,7 +62,7 @@ func (s Storage) PickRandom(userName string) (page *storage.Page, err error) {
 	}
 
 	if len(files) == 0 {
-		return nil, ErrNoSavedPages
+		return nil, storage.ErrNoSavedPages
 	}
 
 	rand.NewSource(time.Now().UnixNano())

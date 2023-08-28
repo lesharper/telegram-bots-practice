@@ -1,3 +1,3 @@
-module telegram_bot_golang
+module telegram-bot-golang-linker
 
 go 1.20

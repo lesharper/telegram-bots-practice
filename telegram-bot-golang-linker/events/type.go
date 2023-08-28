@@ -11,11 +11,12 @@ type Processor interface {
 type Type int
 
 const (
-	unknown Type = iota
-	message
+	Unknown Type = iota
+	Message
 )
 
 type Event struct {
 	Type Type
 	Text string
+	Meta interface{}
 }
