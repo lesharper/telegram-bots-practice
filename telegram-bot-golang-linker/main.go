@@ -3,23 +3,32 @@ package main
 import (
 	"flag"
 	"log"
+
+	tgClient "telegram-bot-golang-linker/clients/telegram"
+	event_consumer "telegram-bot-golang-linker/consumer/event-consumer"
+	telegram "telegram-bot-golang-linker/events/telegram"
+	"telegram-bot-golang-linker/storage/files"
 )
 
 const (
 	tgBotHost         = "api.telegram.org"
+	storagePath       = "files_storage"
 	sqliteStoragePath = "data/sqlite/storage.db"
 	batchSize         = 100
 )
 
+// 5239152130:AAFYRag7QpeWIqkNebBrClJHHjFToVSb2Ks
 func main() {
 
-	//tgClient := telegram.New(tgBotHost, mustToken())
+	eventsProcessor := telegram.New(
+		tgClient.New(tgBotHost, mustToken()),
+		files.New(storagePath))
 
-	//fetcher = fetcher.New(tgClient)
-
-	//processor = processor.New(tgClient)
-
-	//consumer.Start(fetcher, processor)
+	log.Print("Service started")
+	consumer := event_consumer.New(eventsProcessor, eventsProcessor, batchSize)
+	if err := consumer.Start(); err != nil {
+		log.Fatal("Service is stopped", err)
+	}
 }
 
 func mustToken() string {
