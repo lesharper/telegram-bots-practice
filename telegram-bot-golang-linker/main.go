@@ -17,7 +17,6 @@ const (
 	batchSize         = 100
 )
 
-// 5239152130:AAFYRag7QpeWIqkNebBrClJHHjFToVSb2Ks
 func main() {
 
 	eventsProcessor := telegram.New(
