@@ -1,6 +1,6 @@
 import asyncio
 from aiogram import Bot, Dispatcher, F
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 
 import keyboards as kb
 
@@ -16,6 +16,17 @@ async def cmd_start(message: Message):
 @dp.message(F.text == 'Контакты')
 async def contacts(message: Message):
     await message.answer('Мои контакты', reply_markup=kb.socials)
+
+
+@dp.message(F.text == 'Каталог')
+async def catalog(message: Message):
+    await message.answer('Выберите бренд', reply_markup=kb.catalog)
+
+
+@dp.callback_query(F.data == 'Adidas')
+async def cb_adidas(callback: CallbackQuery):
+    await callback.answer('Вы выбрали бренд', show_alert=True)
+    await callback.message.answer(f'Вы выбрали {callback.data}')
 
 
 @dp.message(F.text == '/my_info')

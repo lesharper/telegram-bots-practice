@@ -12,3 +12,8 @@ main = ReplyKeyboardMarkup(keyboard=main_kb,
 
 socials = InlineKeyboardMarkup(
     inline_keyboard=[[InlineKeyboardButton(text='GutHub', url='https://github.com/lesharper')]])
+
+catalog = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Adidas', callback_data='adidas')],
+    [InlineKeyboardButton(text='Nike', callback_data='nike')],
+])
